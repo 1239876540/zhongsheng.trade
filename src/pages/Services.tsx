@@ -252,7 +252,7 @@ export default function Services() {
                             <span className="font-bold text-[color:var(--color-amber-500)] text-base md:text-lg">{t.common.ar}</span>
                           </div>
                           <div className="mt-2 text-xs text-[color:var(--color-ink-900)]/55">
-                            ≈ {info.priceShort} · {lang === 'zh' ? '最终价格以合同条款为准，量大价优' : 'Tarif final sous conditions, dégressif sur quantité'}
+                            ≈ {info.priceShort} · {lang === 'zh' ? '活动特惠价 · 具体价格以合同条款为准' : 'Prix promotionnel · tarif final selon conditions contractuelles'}
                           </div>
                           <div className="mt-4 pt-4 border-t border-[color:var(--color-ink-900)]/10 flex items-center justify-between flex-wrap gap-3">
                             {/* 原 emerald-500/10 绿 → 统一 amber 系（工业贸易风）避免突兀绿点 */}

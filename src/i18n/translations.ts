@@ -267,12 +267,12 @@ export const translations: Record<Lang, Dict> = {
       tractor6x4: {
         name: '徐工 XCMG · 6×4 重型牵引车',
         brand: '徐工 XCMG 官方合作',
-        tag: '重型牵引',
+        tag: '活动特推',
         price: '315,000,000',
         priceShort: '3.15亿 Ar',
         specs: ['6×4 后双桥驱动', '大功率柴油发动机', '大扭矩变速箱', '长途/重货/集装箱首选'],
         desc: '徐工汉风系列 6×4 牵引车，双桥驱动、动力强劲，适配重型挂车、集装箱运输、矿业重货等长距离重载场景。',
-        highlight: '重货长距离运输首选',
+        highlight: '活动特惠 · 限量一辆',
       },
       tractor4x2: {
         name: '徐工 XCMG · 4×2 牵引车',
@@ -287,12 +287,12 @@ export const translations: Record<Lang, Dict> = {
       dump6x4: {
         name: '徐工 XCMG · 6×4 自卸车（翻斗车）',
         brand: '徐工 XCMG 官方合作',
-        tag: '工程建设',
+        tag: '特价特推',
         price: '348,000,000',
         priceShort: '3.48亿 Ar',
         specs: ['6×4 双桥自卸', '高强度加厚货箱', '稳定液压举升', '矿山/工地利器'],
         desc: '专为矿山、基建、工程工地设计的徐工 6×4 自卸车，货箱容量大、液压系统稳定，可胜任土石方、砂石、建材等大宗运输。',
-        highlight: '矿山·基建工地利器',
+        highlight: '限时特价 · 仅此一辆',
       },
     },
     about: {
@@ -507,12 +507,12 @@ export const translations: Record<Lang, Dict> = {
       tractor6x4: {
         name: 'Tracteur XCMG 6×4 lourd',
         brand: 'Partenaire officiel XCMG',
-        tag: 'Traction lourde',
+        tag: 'Offre événementielle',
         price: '315 000 000',
         priceShort: '315 M Ar',
         specs: ['6×4 double essieu arrière', 'Moteur diesel haute puissance', 'Boîte robuste', 'Idéal long-courrier / conteneurs'],
         desc: "Tracteur XCMG série Hanfeng 6×4 : puissance et couple élevés, conçu pour les remorques lourdes, le transport de conteneurs et le transport minier sur longue distance.",
-        highlight: 'Pour charges lourdes et longues distances',
+        highlight: 'Promo événementielle · unité limitée',
       },
       tractor4x2: {
         name: 'Tracteur XCMG 4×2',
@@ -527,12 +527,12 @@ export const translations: Record<Lang, Dict> = {
       dump6x4: {
         name: 'Benne XCMG 6×4',
         brand: 'Partenaire officiel XCMG',
-        tag: 'Construction / Mines',
+        tag: 'Promo spéciale',
         price: '348 000 000',
         priceShort: '348 M Ar',
         specs: ['6×4 double essieu', 'Caisse renforcée', 'Benne hydraulique stable', 'Mine / chantier'],
         desc: "Benne XCMG 6×4 spécialement conçue pour la mine, le bâtiment et les chantiers. Grande capacité de charge et système hydraulique fiable.",
-        highlight: "L'atout des mines et chantiers",
+        highlight: 'Offre limitée · une seule unité',
       },
     },
     about: {
