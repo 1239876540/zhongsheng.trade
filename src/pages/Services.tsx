@@ -160,7 +160,7 @@ export default function Services() {
                       <div className="grid grid-cols-6 gap-2 sm:gap-3 md:gap-4">
                         {/* 主图 */}
                         <div className="col-span-6 rounded-[20px] sm:rounded-[28px] overflow-hidden ring-1 ring-[color:var(--color-ink-900)]/10 shadow-[0_30px_80px_-30px_rgba(15,26,45,0.4)] aspect-[16/10] relative group shine-sweep">
-                          <img src={v.images[0]} alt={info.name} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                          <img src={v.images[0]} alt={info.name} loading="lazy" decoding="async" style={{ height: '100%', width: '100%', objectPosition: v.id === 'van' ? 'center 85%' : 'center' }} className="absolute inset-0 object-cover group-hover:scale-105 transition-transform duration-700" />
                           {/* 渐变加深 + 延长中部渐变深度，保证底部品牌/现车标签在浅色车身上也清晰可读 */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
                           {/* 左上编号 */}
@@ -172,9 +172,9 @@ export default function Services() {
                               {info.tag}
                             </span>
                           </div>
-                          {/* 右下"现车·可提" —— 小屏上调字号 / 内边距，避免与左下品牌 tag 横向重叠 */}
+                          {/* 右下价格标签 */}
                           <div className="absolute bottom-4 md:bottom-5 right-4 md:right-5 price-tag text-[11px] md:text-sm leading-none whitespace-nowrap">
-                            {lang === 'zh' ? '现车 · 可提' : 'DISPONIBLE'}
+                            {info.priceShort}
                           </div>
                           {/* 左下品牌标签：md 以下如果左右标签碰了，就堆叠到左下两行；这里用 right auto + max-w-[55%] 防止撞右 */}
                           <div className="absolute bottom-4 md:bottom-5 left-4 md:left-5 max-w-[58%]">
@@ -254,45 +254,10 @@ export default function Services() {
                           <div className="mt-2 text-xs text-[color:var(--color-ink-900)]/55">
                             ≈ {info.priceShort} · {lang === 'zh' ? '活动特惠价 · 具体价格以合同条款为准' : 'Prix promotionnel · tarif final selon conditions contractuelles'}
                           </div>
-                          <div className="mt-4 pt-4 border-t border-[color:var(--color-ink-900)]/10 flex items-center justify-between flex-wrap gap-3">
-                            {/* 原 emerald-500/10 绿 → 统一 amber 系（工业贸易风）避免突兀绿点 */}
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[color:var(--color-amber-500)]/12 text-[color:var(--color-amber-600)] text-xs font-bold">
-                              <CheckCircle className="w-3.5 h-3.5" />
-                              {lang === 'zh' ? '现车库存 · 可现场看车' : 'En stock · Visite possible'}
-                            </div>
+                          <div className="mt-4 pt-4 border-t border-[color:var(--color-ink-900)]/10 flex items-center justify-end flex-wrap gap-3">
                             <div className="text-xs text-[color:var(--color-ink-900)]/60 inline-flex items-center gap-1">
                               <Star className="w-3.5 h-3.5 text-[color:var(--color-amber-500)] fill-[color:var(--color-amber-500)]" />
                               {lang === 'zh' ? '官方合作渠道 · 品质保证' : 'Canal officiel · Garanti'}
-                            </div>
-                          </div>
-                          {/* 库存可视化进度条 */}
-                          <div className="mt-5 grid grid-cols-2 gap-4">
-                            <div className="space-y-2">
-                              <div className="flex items-center justify-between text-[11px] font-bold tracking-widest text-[color:var(--color-ink-900)]/55">
-                                <span>{lang === 'zh' ? '现车数量' : 'UNITÉS'}</span>
-                                <span className="font-mono text-[color:var(--color-ink-900)]">
-                                  {i === 0 ? '12 / 15' : i === 1 ? '8 / 10' : i === 2 ? '14 / 16' : i === 3 ? '18 / 20' : '6 / 8'}
-                                </span>
-                              </div>
-                              <div className="bar-track">
-                                <div className="bar-fill" style={{
-                                  width: i === 0 ? '80%' : i === 1 ? '80%' : i === 2 ? '88%' : i === 3 ? '90%' : '75%'
-                                }} />
-                              </div>
-                            </div>
-                            <div className="space-y-2">
-                              <div className="flex items-center justify-between text-[11px] font-bold tracking-widest text-[color:var(--color-ink-900)]/55">
-                                <span>{lang === 'zh' ? '月出库率' : 'TURN OVER'}</span>
-                                <span className="font-mono text-[color:var(--color-ink-900)]">
-                                  {i === 0 ? '72%' : i === 1 ? '65%' : i === 2 ? '81%' : i === 3 ? '88%' : '58%'}
-                                </span>
-                              </div>
-                              {/* 月出库率：原 emerald 绿条 → 统一走 amber 默认 bar-fill，与全车系 现车 进度条同色系 */}
-                              <div className="bar-track">
-                                <div className="bar-fill" style={{
-                                  width: i === 0 ? '72%' : i === 1 ? '65%' : i === 2 ? '81%' : i === 3 ? '88%' : '58%'
-                                }} />
-                              </div>
                             </div>
                           </div>
                         </div>

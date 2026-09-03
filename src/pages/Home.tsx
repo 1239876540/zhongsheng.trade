@@ -279,7 +279,7 @@ export default function Home() {
             {(['tractor6x4', 'dump6x4', 'light', 'van'] as VKey[]).map((k, i) => (
               <Link to="/services" key={k}
                     className="group relative aspect-[5/4] overflow-hidden rounded-[14px] sm:rounded-[18px] ring-1 ring-white/20 bg-[color:var(--color-ink-900)]/50 shine-sweep tilt-lift">
-                <img src={vehicleImgs[k].main} alt={t.vehicles[k].name} loading="lazy" decoding="async" className="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700" />
+                <img src={vehicleImgs[k].main} alt={t.vehicles[k].name} loading="lazy" decoding="async" style={{ height: '100%', width: '100%', objectPosition: k === 'van' ? 'center 85%' : 'center' }} className="absolute inset-0 object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700" />
                 {/* 渐变加深 + 延长渐变黑覆盖到中部，保证底部长标题不被车图浅色背景淹没（对比度≥4.5:1） */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent" />
                 {/* 底部内容内边距 16px（原 12px 太小，中文双行易贴边裁切） */}
@@ -464,11 +464,11 @@ export default function Home() {
                   to={`/services#${k}`}
                   key={k}
                   className={`group relative block bg-black overflow-hidden border border-white/10 shine-sweep ${
-                    idx === 0 ? 'lg:aspect-[4/3.6]' : ''
+                    idx === 0 ? 'lg:aspect-[4/3.6]' : 'aspect-[16/10]'
                   }`}
-                  style={{ aspectRatio: idx === 0 ? undefined : undefined, minHeight: idx === 0 ? '380px' : '340px', minWidth: '0' }}
+                  style={{ aspectRatio: idx === 0 ? undefined : undefined, minHeight: idx === 0 ? '380px' : '280px', minWidth: '0' }}
                 >
-                  <img src={img} alt={v.name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <img src={img} alt={v.name} loading="lazy" decoding="async" style={{ height: '100%', width: '100%', objectPosition: k === 'van' ? 'center 85%' : 'center' }} className="absolute inset-0 object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10" />
 
                   {/* 左上编号 */}
@@ -509,20 +509,6 @@ export default function Home() {
                       </div>
                       <div className="text-xs sm:text-sm font-bold text-white/80 flex items-center gap-1 group-hover:text-[color:var(--color-amber-500)] group-hover:gap-2 transition-all">
                         {t.home.vehicleConsult}
-                      </div>
-                    </div>
-                    {/* 库存进度条 */}
-                    <div className="mt-3 sm:mt-5 space-y-1 sm:space-y-1.5">
-                      <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-bold tracking-wider">
-                        <span className="text-white/50 uppercase">{lang === 'zh' ? '现车库存' : 'IN STOCK'}</span>
-                        <span className="text-[color:var(--color-amber-500)] font-mono">
-                          {idx === 0 ? '12 / 15' : idx === 1 ? '8 / 10' : idx === 2 ? '18 / 20' : '6 / 8'}
-                        </span>
-                      </div>
-                      <div className="bar-track h-[3px] sm:h-[6px]" style={{ background: 'rgba(255,255,255,0.1)' }}>
-                        <div className="bar-fill" style={{
-                          width: idx === 0 ? '80%' : idx === 1 ? '80%' : idx === 2 ? '90%' : '75%'
-                        }} />
                       </div>
                     </div>
                   </div>
