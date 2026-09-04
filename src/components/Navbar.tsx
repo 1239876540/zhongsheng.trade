@@ -180,6 +180,14 @@ export default function Navbar() {
                 <Link
                   key={link.path}
                   to={link.path}
+                  onClick={() => {
+                    setOpen(false)
+                    requestAnimationFrame(() => {
+                      requestAnimationFrame(() => {
+                        window.scrollTo(0, 0)
+                      })
+                    })
+                  }}
                   className={`py-3.5 px-3 text-[15px] font-bold border-b border-white/5 rounded-xl flex items-center justify-between ${
                     isActive(link.path)
                       ? 'text-white bg-white/5'

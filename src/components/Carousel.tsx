@@ -48,7 +48,7 @@ export default function Carousel() {
     <div
       data-carousel=""
       className="bg-[color:var(--color-ink-900)]"
-      style={{ position: 'relative', width: '100%', height: '320px', overflow: 'hidden' }}
+      style={{ position: 'relative', width: '100%', height: '300px', overflow: 'hidden' }}
     >
       <div style={{ position: 'relative', width: '100%', height: '100%' }}>
         <img
@@ -60,6 +60,7 @@ export default function Carousel() {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
+            objectPosition: 'center',
             display: 'block',
             opacity: fade ? 1 : 0,
             transition: 'opacity 0.3s ease',
@@ -134,13 +135,16 @@ export default function Carousel() {
       {/* 响应式高度覆盖 */}
       <style>{`
         @media (min-width: 640px) { 
-          [data-carousel] { height: 400px !important; }
+          [data-carousel] { height: 420px !important; }
         }
         @media (min-width: 768px) { 
-          [data-carousel] { height: 500px !important; }
+          [data-carousel] { height: 520px !important; }
         }
         @media (min-width: 1024px) { 
-          [data-carousel] { height: 560px !important; }
+          [data-carousel] { height: 600px !important; }
+        }
+        @media (min-width: 1280px) { 
+          [data-carousel] { height: 680px !important; }
         }
       `}</style>
     </div>

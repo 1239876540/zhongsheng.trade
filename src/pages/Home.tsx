@@ -280,13 +280,15 @@ export default function Home() {
             {(['tractor6x4', 'dump6x4', 'light', 'van'] as VKey[]).map((k, i) => (
               <Link to="/services" key={k}
                     className="group relative aspect-[5/4] overflow-hidden rounded-[14px] sm:rounded-[18px] ring-1 ring-white/20 bg-[color:var(--color-ink-900)]/50 shine-sweep tilt-lift">
-                <img src={vehicleImgs[k].main} alt={t.vehicles[k].name} loading="lazy" decoding="async" style={{ height: '100%', width: '100%', objectPosition: k === 'van' ? 'center 85%' : 'center' }} className="absolute inset-0 object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700" />
+                <img src={vehicleImgs[k].main} alt={t.vehicles[k].name} loading="lazy" decoding="async" style={{ height: '100%', width: '100%', objectPosition: k === 'van' ? 'center 85%' : k === 'dump6x4' ? 'center 30%' : 'center' }} className="absolute inset-0 object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700" />
                 {/* 渐变加深 + 延长渐变黑覆盖到中部，保证底部长标题不被车图浅色背景淹没（对比度≥4.5:1） */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent" />
                 {/* 底部内容内边距 16px（原 12px 太小，中文双行易贴边裁切） */}
                 <div className="absolute left-3 right-3 bottom-3 sm:left-4 sm:right-4 sm:bottom-4">
-                  <div className="text-[9px] sm:text-[10px] text-[color:var(--color-amber-500)] font-black tracking-[0.22em] uppercase mb-1">
-                    FLEET · {String(i + 1).padStart(2, '0')}
+                  <div className={`text-[9px] sm:text-[10px] font-black tracking-[0.22em] uppercase mb-1 ${
+                    t.vehicles[k].tag.includes('特价') || t.vehicles[k].tag.includes('活动') ? 'text-red-400' : 'text-[color:var(--color-amber-500)]'
+                  }`}>
+                    {t.vehicles[k].tag.includes('特价') || t.vehicles[k].tag.includes('活动') ? t.vehicles[k].tag : `FLEET · ${String(i + 1).padStart(2, '0')}`}
                   </div>
                   {/* 中文长名（如"徐工漢風 G 7 6×4 自卸车（翻斗车）"）常需双行，所以 line-clamp-3 兜底 + 行高 1.35 */}
                   <div className="text-white text-[11px] sm:text-[12px] md:text-[14px] leading-[1.3] font-bold tracking-tight line-clamp-2 sm:line-clamp-3">
@@ -347,7 +349,7 @@ export default function Home() {
           </div>
         </div>
         {/* 无限滚动 marquee 信任卡 */}
-        <div className="relative [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]">
+        <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]">
           <div className="marquee gap-4 md:gap-5 px-4 md:px-10">
             {[...Array(2)].flatMap((_, dup) => [
               { t: 'XCMG 徐工', s: 'OFFICIAL PARTNER' },
@@ -469,12 +471,10 @@ export default function Home() {
                 <Link
                   to={`/services#${k}`}
                   key={k}
-                  className={`group relative block bg-black overflow-hidden border border-white/10 shine-sweep ${
-                    idx === 0 ? 'lg:aspect-[4/3.6]' : 'aspect-[16/10]'
-                  }`}
-                  style={{ aspectRatio: idx === 0 ? undefined : undefined, minHeight: idx === 0 ? '380px' : '280px', minWidth: '0' }}
+                  className="group relative block bg-black overflow-hidden border border-white/10 shine-sweep aspect-[16/10] lg:aspect-[4/3.6]"
+                  style={{ minHeight: '300px', minWidth: '0' }}
                 >
-                  <img src={img} alt={v.name} loading="lazy" decoding="async" style={{ height: '100%', width: '100%', objectPosition: k === 'van' ? 'center 85%' : 'center' }} className="absolute inset-0 object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <img src={img} alt={v.name} loading="lazy" decoding="async" style={{ height: '100%', width: '100%', objectPosition: k === 'van' ? 'center 85%' : k === 'dump6x4' ? 'center 20%' : 'center' }} className="absolute inset-0 object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10" />
 
                   {/* 左上编号 */}
@@ -482,7 +482,11 @@ export default function Home() {
                     <span className="badge-ink !bg-white/10 backdrop-blur-sm !border !border-white/20 !text-white !rounded-none !p-1.5 sm:!p-2 text-[9px] sm:text-[10px] font-black tracking-[0.3em]">
                       {String(idx + 1).padStart(2, '0')} / 04
                     </span>
-                    <span className="badge-ink !bg-[color:var(--color-amber-500)] !text-[color:var(--color-ink-900)] !rounded-none !p-1.5 sm:!p-2 text-[9px] sm:text-[10px] font-black tracking-[0.2em]">
+                    <span className={`!rounded-none !p-1.5 sm:!p-2 text-[9px] sm:text-[10px] font-black tracking-[0.2em] ${
+                      v.tag.includes('特价') || v.tag.includes('活动')
+                        ? 'bg-red-600 text-white animate-pulse ring-2 ring-amber-400 shadow-lg'
+                        : 'badge-ink !bg-[color:var(--color-amber-500)] !text-[color:var(--color-ink-900)]'
+                    }`}>
                       {v.tag}
                     </span>
                   </div>
@@ -509,8 +513,12 @@ export default function Home() {
                         </div>
                       ))}
                     </div>
-                    <div className="mt-3 sm:mt-5 flex items-center justify-between">
-                      <div className="text-[12px] sm:text-[13px] text-[color:var(--color-amber-500)] font-bold">
+                    <div className="mt-3 sm:mt-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
+                      <div className={`text-[12px] sm:text-[13px] font-bold px-2 py-0.5 rounded ${
+                        v.highlight.includes('特价') || v.highlight.includes('活动') || v.highlight.includes('限量') || v.highlight.includes('仅此')
+                          ? 'bg-red-600/90 text-white animate-pulse'
+                          : 'text-[color:var(--color-amber-500)]'
+                      }`}>
                         {v.highlight}
                       </div>
                       <div className="text-xs sm:text-sm font-bold text-white/80 flex items-center gap-1 group-hover:text-[color:var(--color-amber-500)] group-hover:gap-2 transition-all">

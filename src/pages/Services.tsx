@@ -160,7 +160,7 @@ export default function Services() {
                       <div className="grid grid-cols-6 gap-2 sm:gap-3 md:gap-4">
                         {/* 主图 */}
                         <div className="col-span-6 rounded-[20px] sm:rounded-[28px] overflow-hidden ring-1 ring-[color:var(--color-ink-900)]/10 shadow-[0_30px_80px_-30px_rgba(15,26,45,0.4)] aspect-[16/10] relative group shine-sweep">
-                          <img src={v.images[0]} alt={info.name} loading="lazy" decoding="async" style={{ height: '100%', width: '100%', objectPosition: v.id === 'van' ? 'center 85%' : 'center' }} className="absolute inset-0 object-cover group-hover:scale-105 transition-transform duration-700" />
+                          <img src={v.images[0]} alt={info.name} loading="lazy" decoding="async" style={{ height: '100%', width: '100%', objectPosition: v.id === 'van' ? 'center 85%' : v.id === 'dump6x4' ? 'center 30%' : 'center' }} className="absolute inset-0 object-cover group-hover:scale-105 transition-transform duration-700" />
                           {/* 渐变加深 + 延长中部渐变深度，保证底部品牌/现车标签在浅色车身上也清晰可读 */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
                           {/* 左上编号 */}
@@ -168,7 +168,11 @@ export default function Services() {
                             <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-white/92 backdrop-blur text-[color:var(--color-ink-900)] flex items-center justify-center font-mono font-black text-[12px] md:text-sm shadow-lg">
                               {v.no}
                             </div>
-                            <span className="px-2.5 md:px-3 py-1.5 rounded-full bg-white/92 backdrop-blur text-[color:var(--color-ink-900)] text-[11px] md:text-xs font-bold shadow">
+                            <span className={`px-2.5 md:px-3 py-1.5 rounded-full backdrop-blur text-[11px] md:text-xs font-bold shadow ${
+                              info.tag.includes('特价') || info.tag.includes('活动') || info.tag.includes('Promo') || info.tag.includes('Offre')
+                                ? 'bg-red-600 text-white animate-pulse ring-2 ring-amber-400'
+                                : 'bg-white/92 text-[color:var(--color-ink-900)]'
+                            }`}>
                               {info.tag}
                             </span>
                           </div>

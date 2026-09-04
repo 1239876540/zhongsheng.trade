@@ -55,7 +55,7 @@ export default function App() {
       <ScrollToTop />
       <DocLang />
       <Navbar />
-      <main id="main" className="flex-1 pt-20">
+      <main id="main" className="flex-1 pt-20 overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
