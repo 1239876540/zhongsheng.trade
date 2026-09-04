@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import { Truck, Warehouse, Wrench, CarFront, Phone, CalendarCheck, Globe, Languages, Star, Shield, Award, ChevronRight } from 'lucide-react'
 import { useI18n } from '../i18n/I18nContext'
+import Carousel from '../components/Carousel'
 import warehouseGate from '../assets/images/warehouse-gate.jpg'
 import tractorWarehouse from '../assets/images/xcmg-tractor-6x4-warehouse.jpg'
 import realPortSunset from '../assets/images/real-rotterdam-port-sunset.jpg'
@@ -316,6 +317,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ========================================================= */}
+      {/* 实景滚动轮播                                                */}
+      {/* ========================================================= */}
+      <Carousel />
 
       {/* ========================================================= */}
       {/* 信任条 · 跑马灯 marquee                               */}

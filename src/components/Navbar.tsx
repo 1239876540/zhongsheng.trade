@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Phone, Globe } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 import { useI18n } from '../i18n/I18nContext'
 import companyLogo from '../assets/images/company-logo.png'
 
@@ -96,9 +96,9 @@ export default function Navbar() {
           </div>
 
           {/* 右侧：语言 + 电话 CTA */}
-          <div className="flex items-center gap-3">
-            {/* 语言切换 - 玻璃化 pill（带 aria-label + class="lang-btn" 命中 CSS 对比度修复） */}
-            <div className={`hidden sm:flex items-center rounded-full overflow-hidden transition-colors ${
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* 语言切换 - 始终显示在导航栏上 */}
+            <div className={`flex items-center rounded-full overflow-hidden transition-colors ${
               scrolled
                 ? 'bg-white/15 border border-white/15 text-white'
                 : 'bg-white/60 border border-[color:var(--color-ink-200)] text-[color:var(--color-ink-900)]'
@@ -108,7 +108,7 @@ export default function Navbar() {
                 type="button"
                 aria-label={lang === 'zh' ? '当前语言：简体中文（已选中）' : '切换到简体中文'}
                 aria-pressed={lang === 'zh'}
-                className={`lang-btn px-3.5 py-1.5 text-xs font-bold transition-all ${
+                className={`lang-btn px-2.5 sm:px-3.5 py-1.5 text-xs font-bold transition-all ${
                   lang === 'zh'
                     ? 'bg-[color:var(--color-amber-500)] text-[color:var(--color-ink-900)] shadow-sm'
                     : `${scrolled ? 'text-white/85 hover:text-white' : 'text-[color:var(--color-ink-600)] hover:text-[color:var(--color-ink-900)]'}`
@@ -122,7 +122,7 @@ export default function Navbar() {
                 type="button"
                 aria-label={lang === 'fr' ? 'Langue actuelle : Français (sélectionné)' : 'Passer en Français'}
                 aria-pressed={lang === 'fr'}
-                className={`lang-btn px-3.5 py-1.5 text-xs font-bold transition-all ${
+                className={`lang-btn px-2.5 sm:px-3.5 py-1.5 text-xs font-bold transition-all ${
                   lang === 'fr'
                     ? 'bg-[color:var(--color-amber-500)] text-[color:var(--color-ink-900)] shadow-sm'
                     : `${scrolled ? 'text-white/85 hover:text-white' : 'text-[color:var(--color-ink-600)] hover:text-[color:var(--color-ink-900)]'}`
@@ -190,17 +190,7 @@ export default function Navbar() {
                   <span className="text-[color:var(--color-amber-500)]">→</span>
                 </Link>
               ))}
-              {/* 移动语言 */}
-              <div className="flex items-center justify-between py-4 px-2">
-                <span className="text-xs text-white/50 flex items-center gap-1">
-                  <Globe className="w-3.5 h-3.5" aria-hidden="true" /> {lang === 'zh' ? '语言' : 'Langue'}
-                </span>
-                <div className="flex rounded-full overflow-hidden text-xs border border-white/15 bg-white/10 text-white" role="group" aria-label={lang === 'zh' ? '语言切换' : 'Changement de langue'}>
-                  <button type="button" onClick={() => setLang('zh')} aria-pressed={lang === 'zh'} aria-label={lang === 'zh' ? '中文（已选中）' : '切换到中文'} className={`lang-btn px-3 py-1.5 font-bold ${lang==='zh' ? 'bg-[color:var(--color-amber-500)] text-[color:var(--color-ink-900)]' : 'text-white/85 hover:text-white'}`}>中文</button>
-                  <span className="w-px bg-white/15" aria-hidden="true" />
-                  <button type="button" onClick={() => setLang('fr')} aria-pressed={lang === 'fr'} aria-label={lang === 'fr' ? 'Français (sélectionné)' : 'Passer en français'} className={`lang-btn px-3 py-1.5 font-bold ${lang==='fr' ? 'bg-[color:var(--color-amber-500)] text-[color:var(--color-ink-900)]' : 'text-white/85 hover:text-white'}`}>FR</button>
-                </div>
-              </div>
+
               <a
                 href={`tel:${t.contact.phones[0].tel}`}
                 onClick={ripple}

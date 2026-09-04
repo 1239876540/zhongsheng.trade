@@ -28,10 +28,10 @@ export default function About() {
   ]
 
   const milestones = [
-    { year: '20XX', titleZh: '公司成立', titleFr: 'Fondation', descZh: '在马达加斯加塔马塔夫注册成立中盛贸易有限公司。', descFr: 'Création de ZHONG SHENG TRADE à Toamasina, Madagascar.' },
-    { year: '20XX', titleZh: 'XCMG合作', titleFr: 'XCMG', descZh: '与徐工集团建立正式合作关系，成为XCMG车型授权经销商。', descFr: 'Partenariat officiel avec XCMG en tant que distributeur agréé.' },
-    { year: '20XX', titleZh: '仓储扩建', titleFr: 'Expansion', descZh: '仓储园区扩建至 20000㎡+，配套大型停车场，服务能力跃升。', descFr: 'Extension du parc logistique à plus de 20 000 m² + parking.' },
-    { year: '20XX', titleZh: '服务升级', titleFr: 'Service+', descZh: '建立配件中心与售后团队，形成"整车+仓储+配件+停车"一体化能力。', descFr: 'Service unifié : véhicules + entrepôts + pièces + parking.' },
+    { year: '2015', titleZh: '总公司成立', titleFr: 'Fondation', descZh: '总公司在马达加斯加塔马塔夫注册成立，深耕本土市场多年。', descFr: 'Création de la société mère à Toamasina, Madagascar, implantée durablement.' },
+    { year: '2025', titleZh: '中盛成立 · XCMG合作', titleFr: 'ZHONG SHENG · XCMG', descZh: '2025年8月，中盛贸易有限公司正式成立，并与徐工集团建立合作关系，成为XCMG车型授权经销商。', descFr: 'En août 2025, création de ZHONG SHENG TRADE et partenariat officiel avec XCMG en tant que distributeur agréé.' },
+    { year: '2025', titleZh: '仓储扩建', titleFr: 'Expansion', descZh: '仓储园区扩建至 20000㎡+，配套大型停车场，服务能力跃升。', descFr: 'Extension du parc logistique à plus de 20 000 m² + parking.' },
+    { year: '2025', titleZh: '服务升级', titleFr: 'Service+', descZh: '建立配件中心与售后团队，形成"整车+仓储+配件+停车"一体化能力。', descFr: 'Service unifié : véhicules + entrepôts + pièces + parking.' },
   ]
 
   return (
@@ -112,7 +112,7 @@ export default function About() {
                   {lang === 'zh' ? '官方合作' : 'OFFICIEL'}
                 </div>
                 <div className="absolute -bottom-4 -left-4 w-24 h-24 rounded-full border border-[color:var(--color-amber-500)]/40 flex items-center justify-center text-[color:var(--color-amber-500)] text-[10px] font-bold tracking-widest rotate-[-12deg]">
-                  XCMG · EST. 20XX
+                  XCMG · EST. 2025
                 </div>
               </motion.div>
             </div>

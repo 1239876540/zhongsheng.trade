@@ -15,10 +15,15 @@ function ScrollToTop() {
       setTimeout(() => {
         const el = document.querySelector(hash)
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        else window.scrollTo({ top: 0, behavior: 'smooth' })
-      }, 50)
+        else window.scrollTo(0, 0)
+      }, 100)
     } else {
-      window.scrollTo({ top: 0, behavior: 'auto' })
+      // 双重 rAF 确保新页面 DOM 渲染完成后再滚动
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          window.scrollTo(0, 0)
+        })
+      })
     }
   }, [pathname, hash])
   return null
