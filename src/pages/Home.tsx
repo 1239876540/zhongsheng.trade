@@ -477,23 +477,25 @@ export default function Home() {
                   <img src={img} alt={v.name} loading="lazy" decoding="async" style={{ height: '100%', width: '100%', objectPosition: k === 'van' ? 'center 85%' : k === 'dump6x4' ? 'center 20%' : 'center' }} className="absolute inset-0 object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10" />
 
-                  {/* 左上编号 */}
-                  <div className="absolute top-3 sm:top-5 left-3 sm:left-5 flex items-center gap-2 sm:gap-3">
-                    <span className="badge-ink !bg-white/10 backdrop-blur-sm !border !border-white/20 !text-white !rounded-none !p-1.5 sm:!p-2 text-[9px] sm:text-[10px] font-black tracking-[0.3em]">
-                      {String(idx + 1).padStart(2, '0')} / 04
-                    </span>
-                    <span className={`!rounded-none !p-1.5 sm:!p-2 text-[9px] sm:text-[10px] font-black tracking-[0.2em] ${
-                      v.tag.includes('特价') || v.tag.includes('活动')
-                        ? 'bg-red-600 text-white animate-pulse ring-2 ring-amber-400 shadow-lg'
-                        : 'badge-ink !bg-[color:var(--color-amber-500)] !text-[color:var(--color-ink-900)]'
-                    }`}>
-                      {v.tag}
-                    </span>
-                  </div>
-
-                  {/* 右下价格 tag */}
-                  <div className="absolute top-3 sm:top-5 right-3 sm:right-5 price-tag text-[12px] sm:text-[14px] md:text-[16px]">
-                    {v.priceShort}
+                  {/* 顶栏：价格居中 + 标签 */}
+                  <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/95 via-black/80 to-transparent pb-3">
+                    <div className="text-center py-2 sm:py-2.5 border-b-2 border-amber-500/60">
+                      <span className="text-[15px] sm:text-[18px] md:text-[20px] font-black tracking-wider text-[color:var(--color-amber-500)] drop-shadow-[0_0_8px_rgba(232,164,0,0.5)]">
+                        {v.priceShort}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2 mt-1.5">
+                      <span className="text-[9px] sm:text-[10px] font-black tracking-[0.3em] text-white/50">
+                        {String(idx + 1).padStart(2, '0')} / 04
+                      </span>
+                      <span className={`px-2 py-0.5 text-[9px] sm:text-[10px] font-black tracking-[0.15em] ${
+                        v.tag.includes('特价') || v.tag.includes('活动')
+                          ? 'bg-red-600 text-white ring-1 ring-amber-400 animate-pulse'
+                          : 'bg-[color:var(--color-amber-500)] text-[color:var(--color-ink-900)]'
+                      }`}>
+                        {v.tag}
+                      </span>
+                    </div>
                   </div>
 
                   {/* 底部内容 */}
